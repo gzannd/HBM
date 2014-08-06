@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+			<h1>Schedule a showing</h1>
+			<!--<img src="img/formBkg.png" style="max-width:320px;max-height:640px"/>-->
+			
+			<form id="mainForm">
+				<label>
+					<span>First Name:</span><input id="firstName" type="text" name="firstname">
+				</label>
+				
+				<label>
+					<span>Last Name:</span><input id="lastName" type="text" name="lastname">
+				</label>
+				
+				<label>
+					<span>Email Address:</span><input id="email" type="text" name="email">
+				</label>
+				
+				<label>
+					<span>Phone Number:</span><input id="phone" type="text" name="phone">
+				</label>
+				
+				<label>
+					<span>First Date Available:</span><input id="availableDate1" type="date" name="availabledate1">
+				</label>
+				
+				<label>
+					<span>First Time Available:</span><input id="availableTime1" type="time" name="availabletime1">
+				</label>
+				
+				<label>
+					<span>Second Date Available:</span><input id="availableDate2" type="date" name="availabledate2">
+				</label>
+				
+				<label>
+					<span>Second Time Available:</span><input id="availableTime2" type="time" name="availabletime2">
+				</label>
+				
+				<label>
+					<span>Property Location:</span><input id="propertyLocation" type="text" name="propertyaddress">
+				</label>
+			</form>
+			
+			<button id="submitButton">Submit</button>
+			
+		</div>
+		
+        <script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		
+        <script type="text/javascript">
+            app.initialize();
+			
+			
+			$("#submitButton").on("click", function()
+								  {
+									var data = $("#mainForm")[0];
+									$.ajax({
+										 url: "https://es-api.hbm2.com/NativeApps/ScheduleShowing",
+										 type: 'post',
+										 data: {
+										 
+										 },
+										 headers: {
+										 "X-HBM-Authorization-Token": "477A0211-A982-47B5-9978-9DCC595E3903"
+										 },
+										 dataType: 'json',
+										 success: function (data) {
+										   alert(data);
+										 }
+										 });
+								  });
+        </script>
+    </body>
+</html>
